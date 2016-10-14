@@ -1,8 +1,9 @@
 var timer = 200;
 var counter;
 var clicked = 0;
+var interVar;
 function startCounter(){
-	var start = setInterval(function(){
+	interVar = setInterval(function(){
 		timer--;
 		var minute = parseInt(timer/60);
 		var second = parseInt(timer-minute*60);
@@ -10,11 +11,8 @@ function startCounter(){
 		$("#second").text(second);
 		if(timer <= 0){
 			timer = 1;
-		}else{
-
 		}
-	},1000);
-	counter = start;	
+	},1000);	
 };
 
 $("#duo").on('click',function(){
@@ -23,10 +21,9 @@ $("#duo").on('click',function(){
 		clicked = false;
 		console.log("start" , clicked);
 	}else{
-		clearInterval(counter);
+		clearInterval(interVar);
 		clicked = true;
 		console.log("pause", clicked);
-
 	}
 });
 
