@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/dist/semantic.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Countdown</title>
+</head>
+<body>
+	<div class="ui grid">
+		<div class="eight wide column centered">
+			<div id="display" class="six wide column centered">
+				00:00	
+			</div>
+			<div class="eight wide column centered">
+				<div class="ui mini input">
+					<input type="text" id="hour" placeholder="hh">/
+					<input type="text" id="minute" placeholder="mm">/
+					<input type="text" id="second" placeholder="ss">
+					<button id="start" class="ui button">Start</button>
+				</div>
+				<button class="ui red button">Reset</button>
+				<button class="ui green button">Reinitialisation</button>
+				<button  id="pause" class="ui blue button">Stop / play</button>		
+			</div>	
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+	<script src="Semantic-UI-CSS-master/dist/semantic.js" type="text/javascript"></script>
+	<script src="app.js"></script>
+
+</body>
+</html>
