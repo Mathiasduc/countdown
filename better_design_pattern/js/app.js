@@ -4,6 +4,7 @@
       timer: null,
       intervalID: null,
       isRunning: false,
+      startTime: null,
 
       init:function(){
          app.listeners();
@@ -16,34 +17,38 @@
          $("#submit_time").on("click",app.getInput);
       },
 
-      start:function(){
-         if(app.timer === null){
-            app.timer = app.defaultTime;
-         }
-         if(!app.isRunning){
-            console.time('app.intervalID');
-            app.intervalID = setInterval(app.decrement,1000);
-            app.isRunning = true;
-         }
-      },
-
       decrement:function(){
          console.log(app.timer);
-         app.updateView();
+         app.timer--;
+         console.log(app.defaultTime - app.timer);
+         var test = app.startTime - Date.now();
+         console.log(test); 
          if(app.timer <= 0){
+            alert("Dring! Time'sup!");
             console.timeEnd('app.intervalID');
             setTimeout(function(){ alert("Dring! Time'sup!"); },1000);
             app.stop();
          }
-         app.timer--;
+         app.updateView();
       },
 
       updateView:function(){
          var minute = parseInt(app.timer / 60);
          var second = parseInt(app.timer % 60);
+         minute = minute < 10 ? "0" + minute : minute;
+         second = second < 10 ? "0" + second : second;
          $("#progress_bar").val(app.progressStatus());
          $("#minute_button").html(minute);
          $("#second_button").html(second);
+      },
+
+      start:function(){
+         app.timer = app.timer === null ? app.defaultTime : app.timer;
+         console.time('app.intervalID');
+         app.startTime = Date.now();
+         console.log(app.startTime);
+         app.intervalID = setInterval(app.decrement,1000);
+         app.isRunning = true;
       },
 
       stop:function(){
@@ -72,7 +77,7 @@
       },
 
       progressStatus: function(){
-         var status = (app.timer * 100 / app.defaultTime)/ 100;
+         var status = (app.timer / app.defaultTime);
          return (status);
       }
    };

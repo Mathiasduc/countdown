@@ -5,11 +5,14 @@
 	display: flex;
 }
 progress[value]::-webkit-progress-value {
-	background: #DE6449;
+	background: #DE6449;	
 	border-radius: 2px; 
 	background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 progress {
 	width: 250px;
 	height: 35px;
+}
+#title {
+	font-size: 
 }
