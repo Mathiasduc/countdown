@@ -1,6 +1,7 @@
 var pomodoro = 25 * 60 + 1;
 var timer = 25 * 60 + 1;
 var interVar;
+var breakTime = true;
 
 $("#start").on("click", function(){
 	clearInterval(interVar); 
@@ -26,7 +27,7 @@ function startCounter(){
 		$("#minute").html(minute);
 		$("#seconds").html(second);
 		console.log("timer", timer);
-		if(timer <= 0){
+		if(timer <= 0 && breakTime === true){
 			clearInterval(interVar);
 			alert("Dring!!")
 		}
