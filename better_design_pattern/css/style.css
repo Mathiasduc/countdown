@@ -1,9 +1,15 @@
-/* .column{
-	border: 1px black solid;
-} */
 .top-bar.top-bar.top-bar.top-bar.top-bar.top-bar{
 	margin-bottom: 150px;
 }
 .user_control.user_control.user_control.user_control.user_control{
 	display: flex;
+}
+progress[value]::-webkit-progress-value {
+	background: #DE6449;
+	border-radius: 2px; 
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+progress {
+	width: 250px;
+	height: 35px;
 }
