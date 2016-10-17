@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"> 
+	<title>Tomodoro</title>
+	<link rel="stylesheet" href="semantic.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div class="ui grid" >
+		<div class="ui fourteen wide column centered grid  top-bar">
+			<div class="ui grid">
+				<div class="left aligned left floated four wide column">
+					<span id="title">Chronos</span>
+				</div>
+				<div class="right aligned right floated height wide column">
+					<div id="options">
+						<a href="#">lorem</a>
+						<a href="#">ipsum</a>
+						<a href="#">ac</a>
+						<a href="#">novo</a> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="center aligned four wide column centered">
+				<h1 class="">
+					<span id="minute">25</span>:
+					<span id="seconds">00</span>
+				</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="center aligned twelve wide column centered user_control">
+				<div class="ui mini input column">
+					<input id="input_min" type="text" placeholder="Min">
+					<input  id="input_sec" type="text" placeholder="Sec">
+					<div id="submit_time" type="submit" class="ui button">Set time</div>
+				</div>
+				<div class="right floated column">
+					<button id="start" class="ui yellow button">Start</button>
+					<button id="stop" class="ui red button">Stop</button>
+					<button id="reset" class="ui teal button">Reset</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="jquery.js"></script>
+	<script src="semantic.js" ></script>
+	<script src="app.js" ></script>
+</body>
+</html>	
