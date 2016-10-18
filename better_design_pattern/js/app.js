@@ -1,4 +1,5 @@
 (function(){
+
    window.app = {
       defaultTime: 5 * 60, //time in seconds
       timer: null,
@@ -7,62 +8,69 @@
       startTime: null,
 
       init:function(){
-         app.listeners();
+         console.log(this, "init");
+         this.listeners();
       },
 
       listeners:function(){
-         $("#start").on('click',app.start);
-         $("#stop").on('click',app.stop);
-         $("#reset").on('click',app.reset);
-         $("#submit_time").on("click",app.getInput);
+         console.log(this, "listeners");
+         $("#start").on('click',this.start);
+         $("#stop").on('click',this.stop);
+         $("#reset").on('click',this.reset);
+         $("#submit_time").on("click",this.getInput);
       },
 
       decrement:function(){
-         console.log(app.timer);
-         app.timer--;
-         console.log(app.defaultTime - app.timer);
-         var test = app.startTime - Date.now();
+         console.log(this, "decre (fixed)");
+         that.timer--;
+         console.log(that.defaultTime - that.timer);
+         var test = that.startTime - Date.now();
          console.log(test); 
-         if(app.timer <= 0){
+         if(that.timer <= 0){
             alert("Dring! Time'sup!");
-            console.timeEnd('app.intervalID');
+            console.timeEnd('that.intervalID');
             setTimeout(function(){ alert("Dring! Time'sup!"); },1000);
-            app.stop();
+            that.stop();
          }
-         app.updateView();
+         that.updateView();
       },
 
       updateView:function(){
-         var minute = parseInt(app.timer / 60);
-         var second = parseInt(app.timer % 60);
+         console.log(this, "updateView");
+         var minute = parseInt(this.timer / 60);
+         var second = parseInt(this.timer % 60);
          minute = minute < 10 ? "0" + minute : minute;
          second = second < 10 ? "0" + second : second;
-         $("#progress_bar").val(app.progressStatus());
+         $("#progress_bar").val(this.progressStatus());
          $("#minute_button").html(minute);
          $("#second_button").html(second);
       },
 
       start:function(){
-         app.timer = app.timer === null ? app.defaultTime : app.timer;
-         console.time('app.intervalID');
-         app.startTime = Date.now();
-         console.log(app.startTime);
-         app.intervalID = setInterval(app.decrement,1000);
-         app.isRunning = true;
+         console.log(this, "start (fixed)");
+         that.timer = that.timer === null ? that.defaultTime : that.timer;
+         console.time('that.intervalID');
+         that.startTime = Date.now();
+         console.log(that.startTime);
+         that.intervalID = setInterval(that.decrement,1000);
+         that.isRunning = true;
       },
 
       stop:function(){
-         clearInterval(app.intervalID);
-         app.isRunning = false;
+         console.log(this, "stop (fixed)");
+         clearInterval(that.intervalID);
+         that.isRunning = false;
       },
 
       reset:function(){
-         app.stop();
-         app.timer = app.defaultTime;
-         app.updateView();
+         console.log(this, "reset (fixed)");
+         that.stop();
+         that.timer = that.defaultTime;
+         that.updateView();
       },
 
       getInput:function(){
+         console.log(this, "getInput (fixed)");
          var minute = parseInt($("#input_min").val(),10);
          var second = parseInt($("#input_sec").val(),10);
          if(isNaN(minute)){
@@ -71,15 +79,18 @@
          if(isNaN(second)){
             second = 0;
          }
-         app.defaultTime = (minute * 60) + (second);
-         app.timer = app.defaultTime;
-         app.updateView();
+         that.defaultTime = (minute * 60) + (second);
+         that.timer = that.defaultTime;
+         that.updateView();
       },
 
       progressStatus: function(){
-         var status = (app.timer / app.defaultTime);
+         console.log(this, "progressStatus");
+         var status = (this.timer / this.defaultTime);
          return (status);
       }
    };
+   var that = app;
+   console.log(that," that");
    app.init();
 })()
